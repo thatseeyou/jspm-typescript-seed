@@ -2,5 +2,11 @@ System.config({
   baseURL: "/",
   defaultJSExtensions: true,
   transpiler: false,
-  paths: {}
+  paths: {
+    "npm:*": "../jspm_packages/npm/*"
+  },
+
+  map: {
+    "jquery": "npm:jquery@3.1.1"
+  }
 });

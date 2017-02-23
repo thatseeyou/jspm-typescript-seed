@@ -1,1 +1,3 @@
-console.log('Hello world');
+import { ready } from './jquery/ready';
+
+ready();

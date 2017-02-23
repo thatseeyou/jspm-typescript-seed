@@ -24,6 +24,12 @@
       "packages": "jspm_packages"
     },
     "configFile": "src/systemjs.config.js",
+    "dependencies": {
+      "jquery": "npm:jquery@^3.1.1"
+    },
     "devDependencies": {}
+  },
+  "dependencies": {
+    "@types/jquery": "^2.0.40"
   }
 }

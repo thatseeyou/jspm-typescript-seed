@@ -1,3 +1,34 @@
+# CASE 1-1: import jquery
+## 1. add declaration & source files
+```
+proj> npm install --save @types/jquery
+proj> jspm install jquery
+    ↳ package.json and src/systemjs.config.js changed
+```
+## 2. write codes
+### src/app/jquery/ready.ts
+```javascript
+import * as $ from 'jquery';
+
+export function ready() {
+    console.log('call ready');
+    $(document).ready(() =>{
+        console.log('callback ready');
+        $('<p>Hello World</p>').appendTo('body');
+    });
+}
+```
+### src/app/main.ts
+```javascript
+import { ready } from './jquery/ready';
+
+ready();
+```
+## 3. build and run
+```
+proj> npm run build && npm run serve
+```
+
 # Structuring from scratch
 
 ### npm init 
