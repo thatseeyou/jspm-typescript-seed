@@ -1,0 +1,29 @@
+{
+  "name": "jspm-typescript-seed",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "tsc": "tsc",
+    "build": "tsc -p src",
+    "build:trace": "tsc -p src --traceResolution",
+    "build:debug": "tsc -p src --listFiles --listEmittedFiles",
+    "serve": "lite-server"
+  },
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
+  "description": "",
+  "devDependencies": {
+    "jspm": "^0.16.52",
+    "lite-server": "^2.2.2",
+    "typescript": "^2.2.1"
+  },
+  "jspm": {
+    "directories": {
+      "baseURL": "src",
+      "packages": "jspm_packages"
+    },
+    "configFile": "src/systemjs.config.js",
+    "devDependencies": {}
+  }
+}

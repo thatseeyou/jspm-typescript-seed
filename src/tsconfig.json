@@ -1,0 +1,28 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es5",
+        "noImplicitAny": true,
+        "sourceMap": true,
+
+        // related to Angular2
+        "experimentalDecorators": true, 
+        "emitDecoratorMetadata": true,  
+
+        // related to /// <reference types="..." />
+        "typeRoots": [
+            "../types",
+            "../node_modules/@types"
+        ],
+        "types": [],   // no implicit reference
+
+        // related to import MODULE
+        "baseUrl": "..",
+        "paths": {
+            "*": [
+                "types/*",   // custom declarations
+                "node_modules/@types/*"
+            ]
+        }
+    }
+}

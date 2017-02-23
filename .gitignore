@@ -1,0 +1,13 @@
+# temporary files
+*.swp
+
+# restored by npm install
+node_modules/
+
+# restored by jspm install
+jspm_packages/
+
+# created by tsc
+src/**/*.js
+src/**/*.js.map
+
