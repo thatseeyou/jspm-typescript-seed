@@ -8,6 +8,7 @@
     "build:trace": "tsc -p src --traceResolution",
     "build:debug": "tsc -p src --listFiles --listEmittedFiles",
     "bundle": "cd src && jspm bundle app/main --inject",
+    "bundle-sfx": "cd src && jspm bundle-sfx app/main build-all.js",
     "serve": "lite-server"
   },
   "author": "",

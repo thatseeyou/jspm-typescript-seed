@@ -211,6 +211,33 @@ proj> npm run bundle
 ## 3. No need to edit index.html
 If requested module exists in 'bundles' setting of systemjs.config.js SystemJs automatically loads bundle file(build.js).
 
+# CASE 1-5: bundle all to build-all.js
+system.js + systemjs.config.js + import main module + other modules
+## 1. run bundle-sfx command
+### edit scripts of package.json 
+```
+  "scripts": {
+    ...
+    "bundle-sfx": "cd src && jspm bundle-sfx app/main build-all.js",
+    ...
+  },
+```
+## 2. run bundle command
+```
+proj> npm run bundle-sfx
+```
+## 3. edit index.html
+### src/index-all.html
+```javascripot
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="build-all.js"></script>
+    </head>
+    <body>
+    </body>
+</html>
+```
 
 # Structuring from scratch
 
