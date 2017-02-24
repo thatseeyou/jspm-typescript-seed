@@ -3,11 +3,14 @@ import '../../css/jquery-ui.theme.css!css';
 
 import * as $ from 'jquery';
 import { datepicker } from './datepicker';
+import { prettify } from './code-prettify';
 
 export function ready() {
     $(document).ready(() =>{
         $('<p>Hello World</p>').appendTo('body');
 
         datepicker();
+
+        prettify();
     });
 }

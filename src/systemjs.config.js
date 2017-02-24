@@ -8,6 +8,7 @@ System.config({
   },
 
   map: {
+    "code-prettify": "npm:code-prettify@0.1.0",
     "css": "github:systemjs/plugin-css@0.1.32",
     "jquery": "npm:jquery@3.1.1",
     "jqueryui": "npm:jqueryui@1.11.1",
@@ -38,6 +39,10 @@ System.config({
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "ieee754": "npm:ieee754@1.1.8",
       "isarray": "npm:isarray@1.0.0",
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:code-prettify@0.1.0": {
+      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:inherits@2.0.1": {

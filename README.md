@@ -97,6 +97,71 @@ import '../css/jquery-ui.theme.css!css'
 proj> npm run build && npm run serve
 ```
 
+# CASE 1-4: reference custom declarations
+@types/[code-prettify](https://github.com/google/code-prettify) does not exist. I make it for myself.
+
+## 1. install source module
+```
+proj> jspm install npm:code-prettify
+```
+
+## 2. write custom declaration file
+### types/code-prettify/index.d.ts
+```javascript
+// partial declarations
+declare const PR: {
+    prettyPrint(opt_whenDone?:any, opt_root?:any): void;
+}
+```
+refer "baseUrl", "paths" settings of src/tsconfig.json
+```
+    ...
+       "baseUrl": "..",
+        "paths": {
+            "*": [
+                "node_modules/@types/*",
+                "types/*"   // custom declarations
+            ]
+        }
+    ...
+```
+
+## 3. write codes
+### src/jquery/code-prettify.ts
+```javascript
+import '../../css/prettify.css!css';
+
+import * as $ from 'jquery';
+import 'code-prettify';
+
+const code = ...;
+
+export function prettify() {
+    $(`<pre class="prettyprint"><pre>`)
+        .appendTo('body')
+        .text(code);
+
+    PR.prettyPrint();
+}
+```
+
+### src/jquery/ready.ts
+```javascriopt
+...
+import { prettify } from './code-prettify';
+
+export function ready() {
+    ...
+        prettify();
+    ...
+}
+```
+
+## 4. build and run
+```
+proj> npm run build && npm run serve
+```
+
 # Structuring from scratch
 
 ### npm init 
