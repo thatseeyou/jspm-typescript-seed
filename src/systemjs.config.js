@@ -8,6 +8,7 @@ System.config({
   },
 
   map: {
+    "css": "github:systemjs/plugin-css@0.1.32",
     "jquery": "npm:jquery@3.1.1",
     "jqueryui": "npm:jqueryui@1.11.1",
     "github:jspm/nodelibs-assert@0.1.0": {

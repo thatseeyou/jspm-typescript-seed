@@ -68,6 +68,35 @@ export function ready() {
 proj> npm run build && npm run serve
 ```
 
+# CASE 1-3: import css
+SystemJS plugins makes it possible to load non-javascript files.
+## 1. install SystemJs css [plugin](https://github.com/systemjs/systemjs/blob/master/docs/plugins.md)
+
+```
+proj> jspm install css
+    ↳ css also is just module.
+```
+
+## 2. prepare css
+```
+proj> cp <somewhere> src/css/jquery-ui.css
+proj> cp <somewhere> src/css/jquery-ui.theme.css
+```
+## 3. edit codes
+### src/app/jquery/ready.ts
+```javascript
+import '../css/jquery-ui.css!css'
+import '../css/jquery-ui.theme.css!css'
+
+...
+
+```
+
+## 3. build and run
+```
+proj> npm run build && npm run serve
+```
+
 # Structuring from scratch
 
 ### npm init 
