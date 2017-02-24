@@ -6,6 +6,27 @@ System.config({
     "npm:*": "../jspm_packages/npm/*",
     "github:*": "../jspm_packages/github/*"
   },
+  bundles: {
+    "build.js": [
+      "app/main.js",
+      "app/jquery/ready.js",
+      "app/jquery/code-prettify.js",
+      "npm:code-prettify@0.1.0.js",
+      "npm:code-prettify@0.1.0/src/prettify.js",
+      "github:jspm/nodelibs-process@0.1.2.js",
+      "github:jspm/nodelibs-process@0.1.2/index.js",
+      "npm:process@0.11.9.js",
+      "npm:process@0.11.9/browser.js",
+      "npm:jquery@3.1.1.js",
+      "npm:jquery@3.1.1/dist/jquery.js",
+      "css/prettify.css!github:systemjs/plugin-css@0.1.32.js",
+      "app/jquery/datepicker.js",
+      "npm:jqueryui@1.11.1.js",
+      "npm:jqueryui@1.11.1/jquery-ui.js",
+      "css/jquery-ui.theme.css!github:systemjs/plugin-css@0.1.32.js",
+      "css/jquery-ui.css!github:systemjs/plugin-css@0.1.32.js"
+    ]
+  },
 
   map: {
     "code-prettify": "npm:code-prettify@0.1.0",

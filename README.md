@@ -162,6 +162,56 @@ export function ready() {
 proj> npm run build && npm run serve
 ```
 
+# CASE 1-5: bundle modules to build.js
+jspm supports bundle modules into one file. 
+## 1. run bundle command
+### edit scripts of package.json 
+```
+  "scripts": {
+    ...
+    "bundle": "cd src && jspm bundle app/main --inject",
+    ...
+  },
+```
+'jspm bundle' command must be runned on baseURL(src) directory.
+
+--inject option modifies src/systesmjs.config.js 
+
+## 2. run bundle command
+```
+proj> npm run bundle
+```
+### src/systemjs.config.js
+```javascript
+...
+  bundles: {
+    "build.js": [
+      "app/main.js",
+      "app/jquery/ready.js",
+      "app/jquery/code-prettify.js",
+      "npm:code-prettify@0.1.0.js",
+      "npm:code-prettify@0.1.0/src/prettify.js",
+      "github:jspm/nodelibs-process@0.1.2.js",
+      "github:jspm/nodelibs-process@0.1.2/index.js",
+      "npm:process@0.11.9.js",
+      "npm:process@0.11.9/browser.js",
+      "npm:jquery@3.1.1.js",
+      "npm:jquery@3.1.1/dist/jquery.js",
+      "css/prettify.css!github:systemjs/plugin-css@0.1.32.js",
+      "app/jquery/datepicker.js",
+      "npm:jqueryui@1.11.1.js",
+      "npm:jqueryui@1.11.1/jquery-ui.js",
+      "css/jquery-ui.theme.css!github:systemjs/plugin-css@0.1.32.js",
+      "css/jquery-ui.css!github:systemjs/plugin-css@0.1.32.js"
+    ]
+  },
+...
+```
+
+## 3. No need to edit index.html
+If requested module exists in 'bundles' setting of systemjs.config.js SystemJs automatically loads bundle file(build.js).
+
+
 # Structuring from scratch
 
 ### npm init 

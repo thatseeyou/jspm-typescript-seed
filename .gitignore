@@ -8,6 +8,7 @@ node_modules/
 jspm_packages/
 
 # created by tsc
-src/app/**/*.js
-src/app/**/*.js.map
+!src/systemjs.config.js
+src/**/*.js
+src/**/*.js.map
 
