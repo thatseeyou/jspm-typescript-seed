@@ -11,9 +11,7 @@ proj> jspm install jquery
 import * as $ from 'jquery';
 
 export function ready() {
-    console.log('call ready');
     $(document).ready(() =>{
-        console.log('callback ready');
         $('<p>Hello World</p>').appendTo('body');
     });
 }
@@ -24,6 +22,47 @@ import { ready } from './jquery/ready';
 
 ready();
 ```
+## 3. build and run
+```
+proj> npm run build 
+    ↳ 'npm run build:trace' shows the resolution process.
+proj> npm run serve
+```
+
+# CASE 1-2: import jqueryui
+Because jqueryui extends jquery, just import is needed.
+## 1. add declaration & source files
+```
+proj> npm install --save @types/jqueryui
+proj> jspm install jqueryui
+    ↳ package.json and src/systemjs.config.js changed
+```
+
+## 2. write codes
+### src/app/jquery/datepicker.ts
+```javascript
+import * as $ from 'jquery';
+import 'jqueryui';
+
+export function datepicker() {
+    $('<input>')
+        .appendTo('body')
+        .datepicker();
+}
+```
+
+### src/app/jquery/ready.ts
+```javascript
+import * as $ from 'jquery';
+import { datepicker } from './datepicker';
+
+export function ready() {
+    ...
+        datepicker();
+    ...
+}
+```
+
 ## 3. build and run
 ```
 proj> npm run build && npm run serve
