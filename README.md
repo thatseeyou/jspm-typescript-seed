@@ -1,4 +1,8 @@
-# Structuring from scratch
+# Case studies
+* CASE 1 - globals module : [jquery branch](https://github.com/thatseeyou/jspm-typescript-seed/tree/jquery)
+* CASE 0 - starting point : [master branch](https://github.com/thatseeyou/jspm-typescript-seed/tree/master)
+
+# How to construct initial project from scratch
 
 ### npm init 
 ```
