@@ -1,4 +1,18 @@
+# Use globals module like jquery
+## install & run final state
+```
+> git clone 'git@github.com:thatseeyou/jspm-typescript-seed.git'
+> cd jspm-typescript-seed
+proj> git checkout jquery
+proj> npm install
+proj> jspm install
+proj> npm run build
+proj> npm run bundle
+proj> npm run serve
+```
+
 # CASE 1-1: import jquery
+        << tag : git checkout jquery/import-jquery >>
 ## 1. add declaration & source files
 ```
 proj> npm install --save @types/jquery
@@ -30,6 +44,7 @@ proj> npm run serve
 ```
 
 # CASE 1-2: import jqueryui
+        << tag : git checkout jquery/import-jqueryui >>
 Because jqueryui extends jquery, just import is needed.
 ## 1. add declaration & source files
 ```
@@ -69,6 +84,7 @@ proj> npm run build && npm run serve
 ```
 
 # CASE 1-3: import css
+        << tag : git checkout jquery/import-css >>
 SystemJS plugins makes it possible to load non-javascript files.
 ## 1. install SystemJs css [plugin](https://github.com/systemjs/systemjs/blob/master/docs/plugins.md)
 
@@ -98,6 +114,7 @@ proj> npm run build && npm run serve
 ```
 
 # CASE 1-4: reference custom declarations
+        << tag : git checkout jquery/import-custom-declarations >>
 @types/[code-prettify](https://github.com/google/code-prettify) does not exist. I make it for myself.
 
 ## 1. install source module
@@ -163,6 +180,7 @@ proj> npm run build && npm run serve
 ```
 
 # CASE 1-5: bundle modules to build.js
+        << tag : git checkout jquery/jspm-bundle >>
 jspm supports bundle modules into one file. 
 ## 1. run bundle command
 ### edit scripts of package.json 
@@ -211,7 +229,8 @@ proj> npm run bundle
 ## 3. No need to edit index.html
 If requested module exists in 'bundles' setting of systemjs.config.js SystemJs automatically loads bundle file(build.js).
 
-# CASE 1-5: bundle all to build-all.js
+# CASE 1-6: bundle all to build-all.js
+        << tag : git checkout jquery/jspm-bundle-sfx >>
 system.js + systemjs.config.js + import main module + other modules
 ## 1. run bundle-sfx command
 ### edit scripts of package.json 
@@ -239,7 +258,7 @@ proj> npm run bundle-sfx
 </html>
 ```
 
-# Structuring from scratch
+# How to construct from scratch
 
 ### npm init 
 ```
@@ -263,7 +282,7 @@ Do you wish to use a transpiler? [yes]:no
 ...
 ```
 
-- packages.json
+### packages.json
 ```json
 ...
   "jspm": {
@@ -277,7 +296,7 @@ Do you wish to use a transpiler? [yes]:no
 ...
 ```
 
-- src/systemjs.config.js
+### src/systemjs.config.js
 ```javascript
 System.config({
   baseURL: "/",
