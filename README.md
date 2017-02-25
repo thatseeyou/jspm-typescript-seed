@@ -1,6 +1,7 @@
 # Case studies
-* CASE 1 - globals module : [jquery branch](https://github.com/thatseeyou/jspm-typescript-seed/tree/jquery)
-* CASE 0 - starting point : [master branch](https://github.com/thatseeyou/jspm-typescript-seed/tree/master)
+* CASE 1 - Use globals module : [jquery branch](https://github.com/thatseeyou/jspm-typescript-seed/tree/jquery)
+* CASE 2 - Use angular2 module : [angular2 branch](https://github.com/thatseeyou/jspm-typescript-seed/tree/angular2)
+* CASE 0 - starting point (initial project) : [master branch](https://github.com/thatseeyou/jspm-typescript-seed/tree/master)
 
 # How to construct initial project from scratch
 
