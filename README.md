@@ -124,5 +124,29 @@ proj> npm run build
 proj> npm run serve
 ```
 
+# CASE 2-2: bundle modules to build.js
+        << tag : git checkout angular2/jspm-bundle >>
+jspm supports bundle modules into one file. 
+## 1. run bundle command
+### edit scripts of package.json 
+* 'jspm bundle' command must be runned on baseURL(src) directory.
+* --inject option modifies src/systesmjs.config.js 
+
+```
+  "scripts": {
+    ...
+    "bundle": "cd src && jspm bundle main --inject",
+    ...
+  },
+```
+
+## 2. run bundle command
+```
+proj> npm run bundle
+```
+
+## 3. No need to edit index.html
+* If requested module exists in 'bundles' setting of systemjs.config.js SystemJs automatically loads bundle file(build.js).
+
 # How to construct initial project from scratch
 * CASE 0 - starting point (initial project) : [master branch](https://github.com/thatseeyou/jspm-typescript-seed/tree/master)

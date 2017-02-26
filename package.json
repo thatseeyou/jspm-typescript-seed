@@ -7,6 +7,8 @@
     "build": "tsc -p src",
     "build:trace": "tsc -p src --traceResolution",
     "build:debug": "tsc -p src --listFiles --listEmittedFiles",
+    "bundle": "cd src && jspm bundle main --inject",
+    "unbundle": "cd src && jspm unbundle",
     "serve": "lite-server"
   },
   "author": "",
