@@ -1,130 +1,71 @@
 # Case studies
-* CASE 1 - Use globals module : [jquery branch](https://github.com/thatseeyou/jspm-typescript-seed/tree/jquery)
-* CASE 2 - Use angular2 module : [angular2 branch](https://github.com/thatseeyou/jspm-typescript-seed/tree/angular2)
 * CASE 0 - starting point (initial project) : [master branch](https://github.com/thatseeyou/jspm-typescript-seed/tree/master)
+* CASE 1 - Use globals module : [jquery branch](https://github.com/thatseeyou/jspm-typescript-seed/tree/jquery)
+* CASE 2 - Use angular2 module : angular2 branch (HERE)
 
-# How to construct initial project from scratch
-
-### npm init 
+# Use Angular2 modules
+## install & run final state
 ```
-> mkdir proj && cd $_
-proj> npm init -y
-proj> npm install -g jspm
-    ↳ Global jspm runs local jspm if local jspm exist.
-proj> npm install --save-dev typescript jspm lite-server
-```
-
-### jspm init
-```
-proj> mkdir -p src/app src/css
-proj> jspm init
-    ↳ Use default values except the followings.
-...
-Enter server baseURL (public folder path) [./]:src
-Enter jspm packages folder [src/jspm_packages]:jspm_packages
-Enter config file path [src/config.js]:src/systemjs.config.js
-Do you wish to use a transpiler? [yes]:no
-...
+> git clone 'git@github.com:thatseeyou/jspm-typescript-seed.git'
+> cd jspm-typescript-seed
+proj> git checkout angular2
+proj> npm install
+proj> jspm install
+proj> npm run build
+proj> npm run bundle
+proj> npm run serve
 ```
 
-- packages.json
-```json
-...
-  "jspm": {
-    "directories": {
-      "baseURL": "src",
-      "packages": "jspm_packages"
-    },
-    "configFile": "src/systemjs.config.js",
-    "devDependencies": {}
-  }
-...
+# CASE 2-1: install & setup
+        << tag : git checkout angular2/setup >>
+## 1. Install 
+### [required packages](https://angular.io/docs/ts/latest/guide/npm-packages.html) with jspm
+```
+proj> jspm install core-js
+proj> jspm install rxjs
+proj> jspm install zone.js
+proj> jspm install npm:@angular/common
+proj> jspm install npm:@angular/core
+proj> jspm install npm:@angular/forms
+proj> jspm install npm:@angular/http
+proj> jspm install npm:@angular/platform-browser
+proj> jspm install npm:@angular/platform-browser-dynamic
+proj> jspm install npm:@angular/router
 ```
 
-- src/systemjs.config.js
-```javascript
-System.config({
-  baseURL: "/",
-  defaultJSExtensions: true,
-  transpiler: false,
-  paths: {}
-});
+### declaration packages with npm
+```
+proj> npm install --save @types/node
+    ↳ module.id is referenced
 ```
 
-### edit "scripts" of packages.json
-```json
-...
-  "scripts": {
-    "tsc": "tsc",
-    "build": "tsc -p src",
-    "build:trace": "tsc -p src --traceResolution",
-    "build:debug": "tsc -p src --listFiles --listEmittedFiles",
-    "serve": "lite-server"
-  },
-...
-```
-
-### tsc --init
-```
-proj> npm run tsc -- --init && mv tsconfig.json src/
-```
-
-### bs-config.json for lite-server
-```json
-{
-  "server": {
-    "baseDir": "src",
-    "routes": {
-      "/jspm_packages": "jspm_packages"
-    }
-  }
-}
-```
-
-### src/index.html
-```html
-<!DOCTYPE html>
-<html>
-    <head>
-        <script src="jspm_packages/system.js"></script>
-        <script src="systemjs.config.js"></script>
-        <script>
-            SystemJS.import('app/main.js');
-        </script>
-    </head>
-    <body>
-    </body>
-</html>
-```
-
-### src/app/main.ts
-```
-console.log('Hello world');
-```
-
-### tsconfig.json
+## 2. Setup
+### src/tsconfig.json
+* Currently typescript does not support jspm_packages. So we add mappings manually if you do not want to install duplicated packages with npm.
+* Specific version must be matched with your installed version.
+* Because 'target' is 'es5, 'es2016' should be added to 'lib'.
 ```
 {
     "compilerOptions": {
-        "module": "commonjs",
-        "target": "es5",
-        "noImplicitAny": true,
-        "sourceMap": true,
-
-        // related to Angular2
-        "experimentalDecorators": true, 
-        "emitDecoratorMetadata": true,  
-
-        // related to /// <reference types="..." />
-        "typeRoots": [
-            "../types",
-            "../node_modules/@types"
+        ...
+        "lib": [
+            "es2016",
+            "dom"
         ],
-        "types": [],   // no implicit reference
+        "types": ["node"],   
 
         // related to import MODULE
         "baseUrl": "..",
         "paths": {
+            "rxjs" : ["jspm_packages/npm/rxjs@5.2.0"],
+            "rxjs/*" : ["jspm_packages/npm/rxjs@5.2.0/*"],
+            "core-js": ["jspm_packages/npm/core-js@2.4.1"],
+            "core-js/*": ["jspm_packages/npm/core-js@2.4.1/*"],
+            "zone.js": ["jspm_packages/npm/zone.js@0.7.7"],
+            "zone.js/*": ["jspm_packages/npm/zone.js@0.7.7/*"],
+            "zone.js/dist/zone": ["jspm_packages/npm/zone.js@0.7.7/dist/zone.js.d.ts"],
+            "@angular/*": ["jspm_packages/npm/@angular/*@2.4.8"],
+            "@angular/router": ["jspm_packages/npm/@angular/router@3.4.8"],
             "*": [
                 "types/*",   // custom declarations
                 "node_modules/@types/*"
@@ -132,46 +73,56 @@ console.log('Hello world');
         }
     }
 }
+
 ```
 
-### .vscode/tasks.json (for visual studio code)
-- Run background compile task by command palette
+### 3. Source files
+Source files has been copied from [angular CLI quickstart](https://angular.io/docs/ts/latest/cli-quickstart.html)
 
-```json
-{
-    "version": "0.1.0",
-    "command": "tsc",
-    "isShellCommand": true,
-    "args": ["-w", "-p", "src"],
-    "showOutput": "silent",
-    "isBackground": true,
-    "problemMatcher": "$tsc-watch"
-}
+### src/index.html
+* import src/main.js -> import main.js
+* \<app-root\> element added
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="jspm_packages/system.js"></script>
+        <script src="systemjs.config.js"></script>
+        <script>
+            SystemJS.import('main.js');
+        </script>
+    </head>
+    <body>
+        <app-root>Loading...</app-root>
+    </body>
+</html>
 ```
 
-### build & run
+### src/main.ts
 ```
-proj> npm run build
+import './polyfills';
+...
+```
+
+### src/app/app.component.ts
+* module.id added for [component-relative paths](https://angular.io/docs/ts/latest/cookbook/component-relative-paths.html)
+```
+import { Component } from '@angular/core';
+
+@Component({
+  moduleId: module.id,
+  ...
+})
+...
+```
+
+## 4. build and run
+```
+proj> npm run build 
+    ↳ or run "npm run build:trace" to check resolution process.
 proj> npm run serve
 ```
 
-# Troubleshooting
-### jspm install ERROR
-```
-TypeError: Install of jspm to ^0.16.52 has no registry property provided.
-```
-* check the existence of "devDependencies" (or dependencies) at package.json
-```json
-"jspm": {
-    "directories": {
-      "baseURL": "src",
-      "packages": "jspm_packages"
-    },
-    "configFile": "src/systemjs.config.js",
-    "devDependencies": {}
-  }
-```
-
-
-
-
+# How to construct initial project from scratch
+* CASE 0 - starting point (initial project) : [master branch](https://github.com/thatseeyou/jspm-typescript-seed/tree/master)
