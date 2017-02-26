@@ -9,6 +9,7 @@
     "build:debug": "tsc -p src --listFiles --listEmittedFiles",
     "bundle": "cd src && jspm bundle main --inject",
     "unbundle": "cd src && jspm unbundle",
+    "bundle-sfx": "cd src && jspm bundle-sfx main build-all.js",
     "serve": "lite-server"
   },
   "author": "",

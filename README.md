@@ -142,11 +142,61 @@ jspm supports bundle modules into one file.
 
 ## 2. run bundle command
 ```
+proj> npm run build
 proj> npm run bundle
 ```
 
 ## 3. No need to edit index.html
 * If requested module exists in 'bundles' setting of systemjs.config.js SystemJs automatically loads bundle file(build.js).
+
+# CASE 2-3: bundle all to build-all.js
+        << tag : git checkout angular2/jspm-bundle-sfx >>
+system.js + systemjs.config.js + import main module + other modules
+## 1. Workaround for [component-relative paths](https://angular.io/docs/ts/latest/cookbook/component-relative-paths.html)
+* When using bundle-all.js component-relative paths does not worked. I don't know why now. So edit codes to absolute paths.
+```typescript
+import { Component } from '@angular/core';
+
+@Component({
+  // moduleId: module.id, // problem with bundle-sfx
+  selector: 'app-root',
+  templateUrl: './app/app.component.html',
+  styleUrls: ['./app/app.component.css']
+})
+export class AppComponent {
+  title = 'app works!';
+}
+```
+
+## 2. run bundle-sfx command
+### edit scripts of package.json 
+```
+  "scripts": {
+    ...
+    "bundle-sfx": "cd src && jspm bundle-sfx main build-all.js",
+    ...
+  },
+```
+
+## 3. run bundle command
+```
+proj> npm run build
+proj> npm run bundle-sfx
+```
+
+## 4. edit index.html
+### src/index-all.html
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="build-all.js"></script>
+    </head>
+    <body>
+        <app-root>Loading...</app-root>
+    </body>
+</html>
+```
 
 # How to construct initial project from scratch
 * CASE 0 - starting point (initial project) : [master branch](https://github.com/thatseeyou/jspm-typescript-seed/tree/master)
