@@ -2,6 +2,7 @@
 * CASE 0 - starting point (initial project) : [master branch](https://github.com/thatseeyou/jspm-typescript-seed/tree/master)
 * CASE 1 - Use globals module : [jquery branch](https://github.com/thatseeyou/jspm-typescript-seed/tree/jquery)
 * CASE 2 - Use angular2 module : angular2 branch (HERE)
+* CASE 3 - Angular2 + [Tour Of Heroes](https://angular.io/docs/ts/latest/tutorial/) : [toh branch](https://github.com/thatseeyou/jspm-typescript-seed/tree/toh)
 
 # Use Angular2 modules
 ## install & run final state
@@ -153,7 +154,7 @@ proj> npm run bundle
         << tag : git checkout angular2/jspm-bundle-sfx >>
 system.js + systemjs.config.js + import main module + other modules
 ## 1. Workaround for [component-relative paths](https://angular.io/docs/ts/latest/cookbook/component-relative-paths.html)
-* When using bundle-all.js component-relative paths does not worked. I don't know why now. So edit codes to absolute paths.
+* When using build-all.js component-relative paths does not worked. I don't know why now. So edit codes to absolute paths.
 ```typescript
 import { Component } from '@angular/core';
 
