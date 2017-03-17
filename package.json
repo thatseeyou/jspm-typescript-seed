@@ -7,9 +7,11 @@
     "build": "tsc -p src",
     "build:trace": "tsc -p src --traceResolution",
     "build:debug": "tsc -p src --listFiles --listEmittedFiles",
-    "bundle": "cd src && jspm bundle main --inject",
+    "prebundle": "npm run build",
+    "bundle": "cd src && jspm bundle main --inject --skip-source-maps",
     "unbundle": "cd src && jspm unbundle",
-    "bundle-sfx": "cd src && jspm bundle-sfx main build-all.js",
+    "prebundle-sfx": "npm run build",
+    "bundle-sfx": "cd src && jspm bundle-sfx main build-all.js --minify",
     "serve": "lite-server"
   },
   "author": "",
@@ -17,7 +19,7 @@
   "keywords": [],
   "description": "",
   "devDependencies": {
-    "jspm": "^0.16.52",
+    "jspm": "^0.16.53",
     "lite-server": "^2.2.2",
     "typescript": "^2.2.1"
   },
@@ -35,11 +37,18 @@
       "@angular/platform-browser": "npm:@angular/platform-browser@^2.4.8",
       "@angular/platform-browser-dynamic": "npm:@angular/platform-browser-dynamic@^2.4.8",
       "@angular/router": "npm:@angular/router@^3.4.8",
+      "angular-in-memory-web-api": "npm:angular-in-memory-web-api@^0.3.1",
       "core-js": "npm:core-js@^2.4.1",
+      "css": "github:systemjs/plugin-css@^0.1.33",
       "rxjs": "npm:rxjs@^5.2.0",
       "zone.js": "npm:zone.js@^0.7.7"
     },
-    "devDependencies": {}
+    "devDependencies": {},
+    "overrides": {
+      "npm:angular-in-memory-web-api@0.3.1": {
+        "peerDependencies": []
+      }
+    }
   },
   "dependencies": {
     "@types/node": "^7.0.5"

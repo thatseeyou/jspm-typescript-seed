@@ -3,7 +3,7 @@
         "module": "commonjs",
         "target": "es5",
         "noImplicitAny": true,
-        "sourceMap": true,
+        "sourceMap": false,
 		"lib": [
 			"es2016",
 			"dom"
@@ -32,6 +32,7 @@
 			"zone.js/dist/zone": ["jspm_packages/npm/zone.js@0.7.7/dist/zone.js.d.ts"],
 			"@angular/*": ["jspm_packages/npm/@angular/*@2.4.8"],
 			"@angular/router": ["jspm_packages/npm/@angular/router@3.4.8"],
+			"angular-in-memory-web-api": ["jspm_packages/npm/angular-in-memory-web-api@0.3.1"],
             "*": [
                 "types/*",   // custom declarations
                 "node_modules/@types/*"
