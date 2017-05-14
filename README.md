@@ -58,15 +58,14 @@ proj> npm install --save @types/node
         // related to import MODULE
         "baseUrl": "..",
         "paths": {
-            "rxjs" : ["jspm_packages/npm/rxjs@5.2.0"],
-            "rxjs/*" : ["jspm_packages/npm/rxjs@5.2.0/*"],
+            "rxjs" : ["jspm_packages/npm/rxjs@5.4.0"],
+            "rxjs/*" : ["jspm_packages/npm/rxjs@5.4.0/*"],
             "core-js": ["jspm_packages/npm/core-js@2.4.1"],
             "core-js/*": ["jspm_packages/npm/core-js@2.4.1/*"],
-            "zone.js": ["jspm_packages/npm/zone.js@0.7.7"],
-            "zone.js/*": ["jspm_packages/npm/zone.js@0.7.7/*"],
-            "zone.js/dist/zone": ["jspm_packages/npm/zone.js@0.7.7/dist/zone.js.d.ts"],
-            "@angular/*": ["jspm_packages/npm/@angular/*@2.4.8"],
-            "@angular/router": ["jspm_packages/npm/@angular/router@3.4.8"],
+            "zone.js": ["jspm_packages/npm/zone.js@0.8.10"],
+            "zone.js/*": ["jspm_packages/npm/zone.js@0.8.10/*"],
+            "zone.js/dist/zone": ["jspm_packages/npm/zone.js@0.8.10/dist/zone.js.d.ts"],
+            "@angular/*": ["jspm_packages/npm/@angular/*@4.1.2"],
             "*": [
                 "types/*",   // custom declarations
                 "node_modules/@types/*"
