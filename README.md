@@ -32,7 +32,7 @@ proj> jspm install npm:angular-in-memory-web-api -o '{ "peerDependencies": [] }'
 ### tsconfig.json
 ```
 ...
-	"angular-in-memory-web-api": ["jspm_packages/npm/angular-in-memory-web-api@0.3.1"],
+	"angular-in-memory-web-api": ["jspm_packages/npm/angular-in-memory-web-api@0.3.2"],
 ...
 ```
 
